@@ -142,7 +142,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-hi);outline-of
 
 /* animated logo mark */
 .hero-mark{display:flex;justify-content:center}
-.hero-mark svg{width:min(380px,80%);height:auto;filter:drop-shadow(0 30px 60px rgba(0,0,0,.45))}
+.hero-mark svg,.hero-mark img{width:min(380px,80%);height:auto;filter:drop-shadow(0 30px 60px rgba(0,0,0,.45))}
 .brick-anim{opacity:0;animation:brickIn .6s var(--ease) forwards}
 @keyframes brickIn{
   from{opacity:0;transform:translateY(-46px)}
@@ -403,7 +403,7 @@ footer nav a:hover{color:var(--gold)}
 @media(max-width:980px){
   .hero .wrap{grid-template-columns:1fr;gap:44px}
   .hero-mark{order:-1}
-  .hero-mark svg{width:min(240px,60%)}
+  .hero-mark svg,.hero-mark img{width:min(240px,60%)}
   .scroll-cue{display:none}
   .hero-stats{grid-template-columns:repeat(2,1fr);gap:26px 0}
   .stat{padding:20px 20px 0}
@@ -544,35 +544,9 @@ footer nav a:hover{color:var(--gold)}
     </div>
 
     <!-- Animated logo mark: bricks assemble, trowel settles -->
-    <div class="hero-mark" aria-hidden="true">
-      <svg viewBox="0 0 340 330">
-        <g fill="#BFA572">
-          <!-- bottom course -->
-          <rect class="brick-anim" style="animation-delay:.15s" x="20"  y="196" width="70" height="40" rx="3"/>
-          <rect class="brick-anim" style="animation-delay:.25s" x="96"  y="196" width="70" height="40" rx="3"/>
-          <rect class="brick-anim" style="animation-delay:.35s" x="172" y="196" width="70" height="40" rx="3"/>
-          <rect class="brick-anim" style="animation-delay:.45s" x="248" y="196" width="70" height="40" rx="3"/>
-          <!-- middle course -->
-          <rect class="brick-anim" style="animation-delay:.58s" x="58"  y="150" width="70" height="40" rx="3"/>
-          <rect class="brick-anim" style="animation-delay:.68s" x="134" y="150" width="70" height="40" rx="3"/>
-          <rect class="brick-anim" style="animation-delay:.78s" x="210" y="150" width="70" height="40" rx="3"/>
-          <!-- top course -->
-          <rect class="brick-anim" style="animation-delay:.9s"  x="96"  y="104" width="70" height="40" rx="3"/>
-          <rect class="brick-anim" style="animation-delay:1s"   x="172" y="104" width="70" height="40" rx="3"/>
-          <!-- trowel -->
-          <g class="trowel-anim" style="animation-delay:1.12s">
-            <path d="M170 98 C198 70 238 50 262 50 C277 51 281 64 271 73 C248 92 204 104 170 98 Z"/>
-<rect       x="267" y="46" width="9" height="18" rx="3" transform="rotate(32 271.5 64)"/>
-<rect       x="273" y="9" width="16" height="40" rx="8" transform="rotate(32 281 49)"/>
-          </g>
-        </g>
-        <!-- wordmark -->
-        <text class="mark-word" x="22" y="286" text-anchor="start" fill="#EFEAE0" font-family="'Bebas Neue',sans-serif" font-size="50" letter-spacing="5" textLength="230" lengthAdjust="spacingAndGlyphs">HNM BUILDERS</text>
-        <text class="mark-ltd" x="262" y="286" text-anchor="start" fill="#BFA572" font-family="'Bebas Neue',sans-serif" font-size="50" letter-spacing="5" textLength="56" lengthAdjust="spacingAndGlyphs">LTD</text>
-        <rect class="mark-rule" x="52" y="300" width="236" height="3" fill="#BFA572"/>
-        <text class="mark-tag" x="170" y="324" text-anchor="middle" fill="#BFA572" font-family="'Jost',sans-serif" font-size="13" letter-spacing="4">WOKING · SURREY</text>
-      </svg>
-    </div>
+   <div class="hero-mark">
+  <img src="images/logo.png" alt="HNM Builders Ltd — bricklaying, patios, driveways and extensions in Woking, Surrey">
+  </div>
   </div>
   <div class="scroll-cue">Scroll</div>
 </section>
