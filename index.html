@@ -442,6 +442,35 @@ footer nav a:hover{color:var(--gold)}
   .about-grid{grid-template-columns:1fr}
 }
 
+/* ============ CONTACT FORM ============ */
+.cform{max-width:640px;margin:0 auto;text-align:left}
+.cform-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.cfield-full{grid-column:1/-1}
+.cfield label{
+  display:block;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:500;margin-bottom:8px;
+}
+.cfield input,.cfield select,.cfield textarea{
+  width:100%;background:var(--navy-panel);border:1px solid var(--line);border-radius:4px;
+  color:var(--cream);font-family:var(--body);font-weight:300;font-size:16px;
+  padding:13px 16px;transition:border-color .3s,box-shadow .3s;
+}
+.cfield textarea{resize:vertical;min-height:110px}
+.cfield select{appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23BFA572' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:16px;padding-right:44px;
+}
+.cfield select:invalid{color:var(--muted)}
+.cfield input::placeholder,.cfield textarea::placeholder{color:var(--muted);opacity:.7}
+.cfield input:focus,.cfield select:focus,.cfield textarea:focus{
+  outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(191,165,114,.18);
+}
+.cform-btn{margin-top:26px;width:100%;justify-content:center}
+.cform-btn:disabled{cursor:default;transform:none;box-shadow:none}
+.cform-btn.sent{background:var(--gold-dim);color:var(--navy-deep)}
+.cform-note{margin-top:14px;font-size:14px;color:var(--muted);text-align:center;min-height:1.4em}
+@media(max-width:560px){.cform-grid{grid-template-columns:1fr}}
+
 /* ============ REDUCED MOTION ============ */
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -782,10 +811,39 @@ footer nav a:hover{color:var(--gold)}
     <p class="eyebrow rv">Let's build</p>
     <h2 class="rv d1">Build with <em style="font-style:normal;color:var(--gold)">confidence.</em></h2>
     <p class="lede rv d2">One call gets you honest advice, a free site visit and a clear, no-obligation quote — usually within days, not weeks.</p>
-    <a class="phone rv d2" href="tel:+447983188965">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      07983 188965
-    </a>
+    <form class="cform rv d2" id="contactForm" action="https://formspree.io/f/maqrpkbb" method="POST" novalidate>
+      <div class="cform-grid">
+        <div class="cfield">
+          <label for="cfName">Name</label>
+          <input id="cfName" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="cfield">
+          <label for="cfEmail">Email</label>
+          <input id="cfEmail" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="cfield">
+          <label for="cfPhone">Phone</label>
+          <input id="cfPhone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+        <div class="cfield">
+          <label for="cfService">Service</label>
+          <select id="cfService" name="service" required>
+            <option value="" disabled selected>Select a service…</option>
+            <option>Bricklaying</option>
+            <option>Patio</option>
+            <option>Driveway</option>
+            <option>Extension</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="cfield cfield-full">
+          <label for="cfMsg">Tell us about the job</label>
+          <textarea id="cfMsg" name="message" rows="4" placeholder="A short description — location, rough size, timings…" required></textarea>
+        </div>
+      </div>
+      <button class="btn btn-gold cform-btn" id="cformBtn" type="submit">Send</button>
+      <p class="cform-note" id="cformNote" role="status" aria-live="polite"></p>
+    </form>
     <div class="contact-meta">
       <div class="cmeta rv d2">
         <span class="lbl">Based in</span>
@@ -803,6 +861,8 @@ footer nav a:hover{color:var(--gold)}
   </div>
 </section>
 </main>
+
+  
 
 <!-- ============ FOOTER ============ -->
 <footer>
@@ -858,7 +918,7 @@ const io = new IntersectionObserver(entries => {
 }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-// ---------- counters (observer + fallback sweep, each runs once) ----------
+// ---------- counters ----------
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const counters = [...document.querySelectorAll('[data-count]')];
 
@@ -889,7 +949,6 @@ const cio = new IntersectionObserver(entries => {
 }, {threshold:.1, rootMargin:'0px 0px -20px 0px'});
 counters.forEach(el => cio.observe(el));
 
-// safety net: if the observer ever misses, fire when the element is on screen
 function counterSweep(){
   counters.forEach(el => {
     if (el.dataset.done) return;
@@ -900,6 +959,7 @@ function counterSweep(){
 addEventListener('scroll', counterSweep, {passive:true});
 addEventListener('load', counterSweep);
 setTimeout(counterSweep, 800);
+
 // ---------- gallery lightbox ----------
 const items = [...document.querySelectorAll('.g-item')];
 const lb = document.getElementById('lightbox');
@@ -944,6 +1004,38 @@ addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') show(idx - 1);
   if (e.key === 'ArrowRight') show(idx + 1);
 });
+
+// ---------- contact form (AJAX submit, no redirect) ----------
+const cform = document.getElementById('contactForm');
+if (cform) {
+  const btn = document.getElementById('cformBtn');
+  const note = document.getElementById('cformNote');
+  cform.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!cform.reportValidity()) return;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    note.textContent = '';
+    try {
+      const res = await fetch(cform.action, {
+        method: 'POST',
+        body: new FormData(cform),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        btn.textContent = 'Sent — we\'ll be in touch';
+        btn.classList.add('sent');
+        cform.reset();
+      } else {
+        throw new Error('bad response');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Send';
+      note.textContent = 'Something went wrong — please try again, or call 07983 188965.';
+    }
+  });
+}
 </script>
 </body>
 </html>
