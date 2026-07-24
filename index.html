@@ -61,7 +61,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-hi);outline-of
 .nav.scrolled{border-bottom-color:var(--line);background:color-mix(in srgb, var(--navy-deep) 92%, transparent)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{display:flex;align-items:center;gap:13px}
-.brand svg{width:38px;height:38px;flex:none}
+.brand svg,.brand img.brand-logo{width:38px;height:38px;flex:none;object-fit:contain}
 .brand-name{font-family:var(--display);font-size:26px;letter-spacing:.08em;color:var(--cream);line-height:1;padding-top:3px}
 .brand-name span{color:var(--gold)}
 .nav-links{display:flex;gap:34px;list-style:none}
@@ -391,7 +391,7 @@ section{padding:110px 0}
 footer{background:var(--navy-deep);border-top:1px solid var(--line);padding:38px 0}
 footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .f-brand{display:flex;align-items:center;gap:11px}
-.f-brand svg{width:26px;height:26px}
+.f-brand svg,.f-brand img.brand-logo{width:26px;height:26px;object-fit:contain}
 .f-brand span{font-family:var(--display);font-size:20px;letter-spacing:.08em}
 .f-brand b{color:var(--gold);font-weight:400}
 footer small{color:var(--muted);font-size:13.5px;letter-spacing:.02em}
@@ -486,17 +486,7 @@ footer nav a:hover{color:var(--gold)}
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="HNM Builders Ltd home">
-      <svg viewBox="0 0 120 110" aria-hidden="true">
-        <g fill="#BFA572">
-          <path d="M56 34 C66 24 80 16 88 16 C93 16.5 94.5 21 91 24 C83 31 68 36 56 34 Z"/>
-          <rect x="89" y="15" width="3.5" height="7" rx="1.5" transform="rotate(32 90.7 22)"/>
-          <rect x="91" y="1" width="6" height="15" rx="3" transform="rotate(32 94 16)"/>
-          <rect x="34" y="38" width="24" height="14" rx="1.5"/><rect x="61" y="38" width="24" height="14" rx="1.5"/>
-          <rect x="20" y="55" width="24" height="14" rx="1.5"/><rect x="47" y="55" width="24" height="14" rx="1.5"/><rect x="74" y="55" width="24" height="14" rx="1.5"/>
-          <rect x="6"  y="72" width="24" height="14" rx="1.5"/><rect x="33" y="72" width="24" height="14" rx="1.5"/><rect x="60" y="72" width="24" height="14" rx="1.5"/><rect x="87" y="72" width="24" height="14" rx="1.5"/>
-        </g>
-      </svg>
-      <span class="brand-name">HNM <span>Builders</span> <span>Ltd</span></span>
+     <img class="brand-logo" src="images/logo.png" alt="">
     </a>
     <nav aria-label="Main">
       <ul class="nav-links" id="navLinks">
@@ -844,14 +834,7 @@ footer nav a:hover{color:var(--gold)}
 <footer>
   <div class="wrap">
     <a class="f-brand" href="#top">
-      <svg viewBox="0 0 120 110" aria-hidden="true">
-        <g fill="#BFA572">
-          <path d="M78 2c9-4 16 3 12 12L74 34l-14-8z" transform="rotate(8 80 14)"/>
-          <rect x="34" y="38" width="24" height="14" rx="1.5"/><rect x="61" y="38" width="24" height="14" rx="1.5"/>
-          <rect x="20" y="55" width="24" height="14" rx="1.5"/><rect x="47" y="55" width="24" height="14" rx="1.5"/><rect x="74" y="55" width="24" height="14" rx="1.5"/>
-          <rect x="6"  y="72" width="24" height="14" rx="1.5"/><rect x="33" y="72" width="24" height="14" rx="1.5"/><rect x="60" y="72" width="24" height="14" rx="1.5"/><rect x="87" y="72" width="24" height="14" rx="1.5"/>
-        </g>
-      </svg>
+      <img class="brand-logo" src="images/logo.png" alt="">
       <span>HNM <b>Builders</b> Ltd</span>
     </a>
     <nav aria-label="Footer">
