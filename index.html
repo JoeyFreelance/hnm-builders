@@ -141,7 +141,19 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-hi);outline-of
 .btn svg{width:16px;height:16px}
 
 /* animated logo mark */
-.hero-mark{display:flex;justify-content:center}
+.hero-mark{display:flex;flex-direction:column;align-items:center}
+.mark-caption{
+  margin-top:22px;
+  font-family:var(--body);
+  font-weight:600;
+  font-size:22px;
+  letter-spacing:.32em;
+  text-align:center;
+  color:var(--gold);
+  text-decoration:underline;
+  text-underline-offset:8px;
+  text-decoration-thickness:2px;
+}
 .hero-mark svg,.hero-mark img{width:min(380px,80%);height:auto;filter:drop-shadow(0 30px 60px rgba(0,0,0,.45))}
 .brick-anim{opacity:0;animation:brickIn .6s var(--ease) forwards}
 @keyframes brickIn{
@@ -536,7 +548,8 @@ footer nav a:hover{color:var(--gold)}
     <!-- Animated logo mark: bricks assemble, trowel settles -->
    <div class="hero-mark">
   <img src="images/logo.png" alt="HNM Builders Ltd — bricklaying, patios, driveways and extensions in Woking, Surrey">
-  </div>
+  <p class="mark-caption">HNM BUILDERS LTD</p>
+</div>
   </div>
   <div class="scroll-cue">Scroll</div>
 </section>
